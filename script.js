@@ -1,17 +1,16 @@
 const uri = window.location.href;
 
-const apiUrl = uri+'/coc.json';
+const apiUrl = uri+'/coc.json'; //localtest
 
 document.addEventListener('DOMContentLoaded', async () => {
     const content = document.getElementById('content');
 
     try {
-        // Fetch JSON data from the API
+
         const response = await fetch(apiUrl); // Replace with your API endpoint
         if (!response.ok) throw new Error('Failed to fetch data');
         const data = await response.json();
 
-        // Populate the content
         data.clans.forEach(clan => {
             // Create clan card
             const clanDiv = document.createElement('div');
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             clanDiv.appendChild(clanBadge);
             clanDiv.appendChild(clanDetails);
 
-            // Add members
             const membersDiv = document.createElement('div');
             membersDiv.className = 'members';
 
